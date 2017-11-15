@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Observer pattern</title>
+    <script src="observer.js"></script>
+</head>
+<body>
+    <script>
+        var subject = new Subject();
+
+        var objectOne = {
+            name: "Object One",
+            printData: printData
+        };
+
+        var objectTwo = {
+            name: "Object Two",
+            printData: printData
+        };
+
+        subject.observerAdd(objectOne);
+        subject.observerAdd(objectTwo);
+
+        subject.emit("some data!");
+
+        subject.observerRemove(objectOne);
+        subject.observerRemove(objectTwo);
+
+        subject.emit("some data!"); // nothing
+    </script>
+</body>
+</html>
