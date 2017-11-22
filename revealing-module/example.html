@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Revealing Module Pattern</title>
+    <script src="revealing.js"></script>
+</head>
+<body>
+    <script>
+        moduleWithPrivate.print(); // privateVar
+        moduleWithPrivate.set("changedPrivate");
+        moduleWithPrivate.print(); // changedPrivate
+
+        console.log(moduleWithPrivate.publicVar); // publicVar
+        console.log(moduleWithPrivate.privateVar); // undefined
+
+        moduleWithPrivate.privateVar = "test";
+        console.log(moduleWithPrivate.privateVar); // test
+        moduleWithPrivate.print(); // changedPrivate
+    </script>
+</body>
+</html>
