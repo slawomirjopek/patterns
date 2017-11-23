@@ -1,4 +1,4 @@
-var moduleWithPrivate = (function(){
+var Module1 = (function(){
     var _privateVar = "privateVar";
     var publicVar = "publicVar";
 
@@ -23,7 +23,7 @@ var moduleWithPrivate = (function(){
     }
 })();
 
-var moduleWithPrivateV2 = (function(){
+var Module2 = (function(){
     var object = {};
 
     var _privateVar = "privateVar";
@@ -52,7 +52,7 @@ var moduleWithPrivateV2 = (function(){
     return object;
 })();
 
-var moduleWithPrivateV3 = (function(){
+var Module3 = (function(){
     var _privateVar = "privateVar";
 
     var _privatePrintFunc = function() {
@@ -68,7 +68,7 @@ var moduleWithPrivateV3 = (function(){
         },
         printPublicFuncV2: function() {
             this.printPrivateVar();
-            moduleWithPrivateV3.printPrivateVar();
+            Module3.printPrivateVar();
         }
     }
 })();

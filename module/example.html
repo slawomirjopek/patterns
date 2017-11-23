@@ -7,41 +7,62 @@
 </head>
 <body>
     <script>
-        moduleWithPrivate.print(); // privateVar
-        moduleWithPrivate.set("changedPrivate");
-        moduleWithPrivate.print(); // changedPrivate
+        Module1.print(); // privateVar
+        Module1.set("changedPrivate");
+        Module1.print(); // changedPrivate
 
-        console.log(moduleWithPrivate.publicVar()); // publicVar
-        console.log(moduleWithPrivate.privateVar); // undefined
+        console.log(Module1.publicVar()); // publicVar
+        console.log(Module1.privateVar); // undefined
 
-        moduleWithPrivate.privateVar = "test";
-        console.log(moduleWithPrivate.privateVar); // test
-        moduleWithPrivate.print(); // changedPrivate
+        Module1.privateVar = "test";
+        console.log(Module1.privateVar); // test
+        Module1.print(); // changedPrivate
 
         /* --- v2 --- */
         console.log("--------------- moduleWithPrivateV2 ---------------");
 
-        moduleWithPrivateV2.print(); // privateVar
-        moduleWithPrivateV2.set("changedPrivate");
-        moduleWithPrivateV2.print(); // changedPrivate
+        Module2.print(); // privateVar
+        Module2.set("changedPrivate");
+        Module2.print(); // changedPrivate
 
-        console.log(moduleWithPrivateV2.publicVar()); // publicVar
-        console.log(moduleWithPrivateV2.privateVar); // undefined
+        console.log(Module2.publicVar()); // publicVar
+        console.log(Module2.privateVar); // undefined
 
-        moduleWithPrivateV2.privateVar = "test";
-        console.log(moduleWithPrivateV2.privateVar); // test
-        moduleWithPrivateV2.print(); // changedPrivate
+        Module2.privateVar = "test";
+        console.log(Module2.privateVar); // test
+        Module2.print(); // changedPrivate
 
         /* --- v3 --- */
         console.log("--------------- moduleWithPrivateV3 ---------------");
 
-        moduleWithPrivateV3.printPrivateVar(); // privateVar
+        Module3.printPrivateVar(); // privateVar
         try {
-            moduleWithPrivateV3.printPublicFunc(); // ReferenceError: printPrivateVar is not defined
+            Module3.printPublicFunc(); // ReferenceError: printPrivateVar is not defined
         } catch(e) {
             console.log(e);
         }
-        moduleWithPrivateV3.printPublicFuncV2(); // privateVar privateVar
+        Module3.printPublicFuncV2(); // privateVar privateVar
+
+        /* --- extending --- */
+        console.log("--------------- extending ---------------");
+        console.log(typeof Module3.extension); // undefined
+
+        setTimeout(function() {
+            extend(Module3);
+            console.log(typeof Module3.extension); // function
+        }, 100);
+
+        function extend(ModuleToExtend) {
+            (function(Module){
+                var _privateVar = "extended";
+
+                Module.extension = function() {
+                    console.log(_privateVar);
+                };
+
+                return Module;
+            })(ModuleToExtend);
+        }
     </script>
 </body>
 </html>
