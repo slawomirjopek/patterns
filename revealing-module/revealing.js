@@ -1,13 +1,13 @@
 var moduleWithPrivate = (function(){
-    var privateVar = "privateVar";
+    var _privateVar = "privateVar";
     var publicVar = "publicVar";
 
     var publicSetPrivateVar = function(value) {
-        privateVar = value;
+        _privateVar = value;
     };
 
     var publicPrintPrivateVar = function() {
-        console.log(privateVar);
+        console.log(_privateVar);
     };
 
     var printPublicFunc = function() {

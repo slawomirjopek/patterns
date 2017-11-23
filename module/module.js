@@ -1,21 +1,21 @@
 var moduleWithPrivate = (function(){
-    var privateVar = "privateVar";
+    var _privateVar = "privateVar";
     var publicVar = "publicVar";
 
-    var setPrivateVar = function(value) {
-        privateVar = value;
+    var _setPrivateVar = function(value) {
+        _privateVar = value;
     };
 
-    var printPrivateVar = function() {
-        console.log(privateVar);
+    var _printPrivateVar = function() {
+        console.log(_privateVar);
     };
 
     return {
         set: function(value) {
-            setPrivateVar(value)
+            _setPrivateVar(value)
         },
         print: function() {
-            printPrivateVar()
+            _printPrivateVar()
         },
         publicVar: function() {
             return publicVar
@@ -26,23 +26,23 @@ var moduleWithPrivate = (function(){
 var moduleWithPrivateV2 = (function(){
     var object = {};
 
-    var privateVar = "privateVar";
+    var _privateVar = "privateVar";
     var publicVar = "publicVar";
 
-    var setPrivateVar = function(value) {
-        privateVar = value;
+    var _setPrivateVar = function(value) {
+        _privateVar = value;
     };
 
-    var printPrivateVar = function() {
-        console.log(privateVar);
+    var _printPrivateVar = function() {
+        console.log(_privateVar);
     };
 
     object.set = function(value) {
-        setPrivateVar(value)
+        _setPrivateVar(value)
     };
 
     object.print = function() {
-        printPrivateVar()
+        _printPrivateVar()
     };
 
     object.publicVar = function() {
@@ -53,15 +53,15 @@ var moduleWithPrivateV2 = (function(){
 })();
 
 var moduleWithPrivateV3 = (function(){
-    var privateVar = "privateVar";
+    var _privateVar = "privateVar";
 
-    var privatePrintFunc = function() {
-        console.log(privateVar);
+    var _privatePrintFunc = function() {
+        console.log(_privateVar);
     };
 
     return {
         printPrivateVar: function() {
-            privatePrintFunc();
+            _privatePrintFunc();
         },
         printPublicFunc: function() {
             printPrivateVar();  // error! this refers to object literal not function
