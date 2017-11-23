@@ -64,7 +64,7 @@ var moduleWithPrivateV3 = (function(){
             privatePrintFunc();
         },
         printPublicFunc: function() {
-            printPrivateVar();  // error! scope refers to object literal not function
+            printPrivateVar();  // error! this refers to object literal not function
         },
         printPublicFuncV2: function() {
             this.printPrivateVar();
