@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Module Pattern</title>
+    <script src="module.js"></script>
+</head>
+<body>
+    <script>
+        moduleWithPrivate.print(); // privateVar
+        moduleWithPrivate.set("changedPrivate");
+        moduleWithPrivate.print(); // changedPrivate
+
+        console.log(moduleWithPrivate.publicVar()); // publicVar
+        console.log(moduleWithPrivate.privateVar); // undefined
+
+        moduleWithPrivate.privateVar = "test";
+        console.log(moduleWithPrivate.privateVar); // test
+        moduleWithPrivate.print(); // changedPrivate
+
+        /* --- v2 --- */
+        console.log("--------------- moduleWithPrivateV2 ---------------");
+
+        moduleWithPrivateV2.print(); // privateVar
+        moduleWithPrivateV2.set("changedPrivate");
+        moduleWithPrivateV2.print(); // changedPrivate
+
+        console.log(moduleWithPrivateV2.publicVar()); // publicVar
+        console.log(moduleWithPrivateV2.privateVar); // undefined
+
+        moduleWithPrivateV2.privateVar = "test";
+        console.log(moduleWithPrivateV2.privateVar); // test
+        moduleWithPrivateV2.print(); // changedPrivate
+
+        /* --- v3 --- */
+        console.log("--------------- moduleWithPrivateV3 ---------------");
+
+        moduleWithPrivateV3.printPrivateVar(); // privateVar
+        try {
+            moduleWithPrivateV3.printPublicFunc(); // ReferenceError: printPrivateVar is not defined
+        } catch(e) {
+            console.log(e);
+        }
+        moduleWithPrivateV3.printPublicFuncV2(); // privateVar privateVar
+    </script>
+</body>
+</html>
