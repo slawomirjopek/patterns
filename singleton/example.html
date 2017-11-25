@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Singleton Pattern</title>
+    <script src="singleton.js"></script>
+</head>
+<body>
+    <script>
+        var instance1 = Singleton.getInstance();
+        var instance2 = Singleton.getInstance();
+
+        // instances should be this same
+        console.log(instance1 === instance2); // true
+    </script>
+</body>
+</html>
