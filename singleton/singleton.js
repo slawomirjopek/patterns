@@ -26,3 +26,21 @@ var Singleton = (function(){
         }
     }
 })();
+
+var notSingleton = (function(){
+    var instance;
+
+    function initialize() {
+        // ...
+
+        return {
+            data: "data..."
+        }
+    }
+
+    return  {
+        getInstance: function() {
+            return instance = initialize();
+        }
+    }
+})();
