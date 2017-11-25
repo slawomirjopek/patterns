@@ -9,28 +9,40 @@
     <script>
         var instance1 = Singleton.getInstance();
         var instance2 = Singleton.getInstance();
+        var instance3 = Singleton2;
+        var instance4 = Singleton2;
 
         // instances should be same
         console.log(instance1 === instance2); // true
+        console.log(instance3 === instance4); // true
 
         // counter values should be same
         console.log(instance1.getCounter() === instance2.getCounter()); // true
+        console.log(instance3.getCounter() === instance4.getCounter()); // true
 
         instance1.increment();
         console.log(instance1.getCounter() === instance2.getCounter()); // true
-
-        var instance3 = notSingleton.getInstance();
-        var instance4 = notSingleton.getInstance();
-
-        // instances should not be same
-        console.log(instance3 === instance4); // false
-
-        // initial counter values should be same
         console.log(instance3.getCounter() === instance4.getCounter()); // true
 
+        console.log("--------------- notSingletons ---------------");
+
+        var instance5 = notSingleton.getInstance();
+        var instance6 = notSingleton.getInstance();
+        var instance7 = notSingleton2();
+        var instance8 = notSingleton2();
+
+        // instances should not be same
+        console.log(instance5 === instance6); // false
+
+        // initial counter values should be same
+        console.log(instance5.getCounter() === instance6.getCounter()); // true
+        console.log(instance7.getCounter() === instance8.getCounter()); // true
+
         // after increment counter values should not be same
-        instance3.increment();
-        console.log(instance3.getCounter() === instance4.getCounter()); // false
+        instance5.increment();
+        instance7.increment();
+        console.log(instance5.getCounter() === instance6.getCounter()); // false
+        console.log(instance7.getCounter() === instance8.getCounter()); // false
     </script>
 </body>
 </html>

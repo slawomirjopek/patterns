@@ -29,6 +29,26 @@ var Singleton = (function(){
     }
 })();
 
+var Singleton2 = (function(){
+    var Instance = function() {
+        if (!(this instanceof Instance)) {
+            return new Instance();
+        }
+
+        var counter = 0;
+
+        this.increment = function() {
+            counter++;
+        };
+
+        this.getCounter = function() {
+            return counter;
+        };
+    };
+
+    return Instance();
+})();
+
 var notSingleton = (function(){
     var instance;
 
@@ -55,3 +75,19 @@ var notSingleton = (function(){
         }
     }
 })();
+
+var notSingleton2 = (function(){
+    var counter = 0;
+
+    var Instance = function() {
+        this.increment = function() {
+            counter++;
+        };
+
+        this.getCounter = function() {
+            return counter;
+        };
+    };
+
+    return new Instance();
+});
