@@ -2,16 +2,18 @@ var Singleton = (function(){
     var instance;
 
     function initialize() {
-        var _privateVariable = "Private variable";
+        var _privateCounter = 0;
 
-        var _privateMethod = function() {
-            console.log("Private method, ", _privateVariable)
+        var _privateIncrement = function() {
+            _privateCounter++;
         };
 
         return {
-            publicProperty: "Public property",
-            publicMethod: function() {
-                _privateMethod()
+            increment: function() {
+                _privateIncrement();
+            },
+            getCounter: function() {
+                return _privateCounter;
             }
         }
     }
@@ -31,10 +33,19 @@ var notSingleton = (function(){
     var instance;
 
     function initialize() {
-        // ...
+        var _privateCounter = 0;
+
+        var _privateIncrement = function() {
+            _privateCounter++;
+        };
 
         return {
-            data: "data..."
+            increment: function() {
+                _privateIncrement();
+            },
+            getCounter: function() {
+                return _privateCounter;
+            }
         }
     }
 
