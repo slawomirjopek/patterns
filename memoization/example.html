@@ -7,7 +7,17 @@
 </head>
 <body>
     <script>
+        console.log(expensiveOperation.cache); // {}
+
+        console.time("expensiveOperation");
         expensiveOperation(1000, 10);
+        console.timeEnd("expensiveOperation");
+
+        console.log(expensiveOperation.cache); // {1000, 10: "..."}
+
+        console.time("expensiveOperation_cached");
+        expensiveOperation(1000, 10);
+        console.timeEnd("expensiveOperation_cached"); // xx times faster :)
     </script>
 </body>
 </html>

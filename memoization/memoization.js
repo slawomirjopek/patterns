@@ -1,5 +1,6 @@
 var expensiveOperation = function(times, start) {
-    // function args to array
+    // Function args to array
+    // Array as cache "key"
     var key = Array.prototype.slice.apply(arguments);
     var result = 0;
 
