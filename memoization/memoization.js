@@ -4,6 +4,8 @@ var expensiveOperation = function(times, start) {
     var key = Array.prototype.slice.apply(arguments);
     var result = 0;
 
+    expensiveOperation.cache = expensiveOperation.cache || {};
+
     if (!expensiveOperation.cache[key]) {
         for (var i = 0; i < times; i++) {
             result += String(i);
@@ -14,5 +16,3 @@ var expensiveOperation = function(times, start) {
 
     return expensiveOperation.cache[key];
 };
-
-expensiveOperation.cache = {};
